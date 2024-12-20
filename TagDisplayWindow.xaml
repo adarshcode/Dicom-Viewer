@@ -1,0 +1,33 @@
+﻿<Window x:Class="WpfApp3.TagDisplayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DICOM Tags" Height="600" Width="1100">
+   
+       <Grid>
+           <DataGrid x:Name="TagDataGrid" AutoGenerateColumns="False" Margin="10"
+                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible"
+                     CanUserAddRows="False" IsReadOnly="True" MouseDoubleClick="TagDataGrid_MouseDoubleClick">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding HasNestedTags}" Value="True">
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                   <DataGridTextColumn Header="Tag" Binding="{Binding Tag}" Width="1*" />
+                   <DataGridTextColumn Header="Description" Binding="{Binding Descrp}" Width="2.5*" />
+                   <DataGridTextColumn Header="VR" Binding="{Binding ValueRep}" Width="1*" />
+                   <DataGridTextColumn Header="VM" Binding="{Binding ValueMulti}" Width="1*" />
+                   <DataGridTextColumn Header="Length" Binding="{Binding ValueLength}" Width="1*" />
+                   <DataGridTextColumn Header="Value" Binding="{Binding Value}" Width="3.5*" />
+               </DataGrid.Columns>
+           </DataGrid>
+    </Grid>
+
+      
+
+</Window>
